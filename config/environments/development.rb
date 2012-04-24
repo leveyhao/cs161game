@@ -32,9 +32,6 @@ Cs161game::Application.configure do
   # Do not compress assets
   config.assets.compress = false
 
-  # Allow runtime compiling
-  config.assets.compile = true
-
   # Expands the lines which load the assets
   config.assets.debug = true
 end
