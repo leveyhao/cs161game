@@ -6,14 +6,14 @@
 		<script type="text/javascript" src="json2.js"></script>
 		<script type="text/javascript" src="Track.js"></script>
 */
-
+alert(document.userid);
 //parameters to be set
 var id = document.userid,		//id of current user
     serverurl = "record_event",	//server url page
     group0time1 = 1,			//send data after certain # of events or time interval
     sendTogether = 40,			//send data to server every n events if group0time1 == 0
     interval = 5000,			//send data to server every n milliseconds if group0time1 == 1
-    mouseSampleRate = 3; 		//every nth mousemove event recorded
+    mouseSampleRate = 5; 		//every nth mousemove event recorded
 	
 //misc. variables
 var x, y, time, request, jsonObject;
@@ -128,6 +128,7 @@ function recordEvent(eventname, i, j, str) {
 
 /** sends recorded event data to server **/
 function send() {
+    if (jsonArray.length < 1) return;
     if (window.XMLHttpRequest) {
         //for IE7+, Firefox, Chrome, Opera, Safari
         request = new XMLHttpRequest();
