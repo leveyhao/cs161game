@@ -4,7 +4,14 @@
 	</script>
 	<div id="container">
 		<div id="absorb">
-			<table cellspacing="0" cellpadding="0" style="border-collapse:collapse; border:1px solid #444;"><tr><td><script type="text/javascript" src="assets/absorbHD/EffectEngine.js"></script><script type="text/javascript" src="assets/absorbHD/absorb-hd.js"></script></td></tr></table>
+			<table cellspacing="0" cellpadding="0" style="border-collapse:collapse; border:1px solid #444;">
+			    <tr>
+			        <td>
+			            <%= javascript_include_tag "absorbHD/EffectEngine" %>
+			            <%= javascript_include_tag "absorbHD/absorb-hd" %>
+			        </td>
+			    </tr>
+			</table>
 		</div>
 	</div>
 	

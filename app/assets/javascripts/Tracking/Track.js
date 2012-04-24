@@ -6,7 +6,6 @@
 		<script type="text/javascript" src="json2.js"></script>
 		<script type="text/javascript" src="Track.js"></script>
 */
-alert(document.userid);
 //parameters to be set
 var id = document.userid,		//id of current user
     serverurl = "record_event",	//server url page
