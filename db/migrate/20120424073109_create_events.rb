@@ -2,7 +2,7 @@ class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
       t.integer :user
-      t.integer :time
+      t.decimal :time, :precision => 15
       t.string :event
       t.integer :info1
       t.integer :info2
