@@ -1,6 +1,8 @@
 Cs161game::Application.routes.draw do
   get "home/index"
 
+  match "record_event" => "event#record"
+
   root :to => "home#index"
 
   # The priority is based upon order of creation:
