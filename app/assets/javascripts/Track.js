@@ -147,6 +147,8 @@ function send() {
     //open a POST connection and send the string
     request.open("POST", serverurl, true);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var token = $("meta[name='csrf-token']").attr("content");
+    request.setRequestHeader("X-CSRF-Token", token);
     request.send("eventdata=" + JSON.stringify(jsonArray));
     jsonArray = [];
 }
