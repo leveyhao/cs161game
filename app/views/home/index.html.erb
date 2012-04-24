@@ -1,0 +1,99 @@
+
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="ISO-8859-1" />
+	<title>absOrb HD</title>
+	<style type="text/css">
+		body {
+			background-color: #000;
+			overflow: hidden;
+			margin: 0;
+			padding: 0;
+		}
+		#absorb {
+			position: relative;
+			width: 1026px;
+			height: 774px;
+			-webkit-transform-origin: 0px 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="absorb">
+			<table cellspacing="0" cellpadding="0" style="border-collapse:collapse; border:1px solid #444;"><tr><td><script type="text/javascript" src="assets/EffectEngine.js"></script><script type="text/javascript" src="assets/absorb-hd.js"></script></td></tr></table>
+		</div>
+	</div>
+	
+	<script language="JavaScript">
+		function getInnerWindowSize(dom) {
+			// get size of inner window
+			// From: http://www.howtocreate.co.uk/tutorials/javascript/browserwindow
+			if (!dom) dom = window;
+			var myWidth = 0, myHeight = 0;
+
+			if( typeof( dom.innerWidth ) == 'number' ) {
+				// Non-IE
+				myWidth = dom.innerWidth;
+				myHeight = dom.innerHeight;
+			}
+			else if( dom.document.documentElement && ( dom.document.documentElement.clientWidth || dom.document.documentElement.clientHeight ) ) {
+				// IE 6+ in 'standards compliant mode'
+				myWidth = dom.document.documentElement.clientWidth;
+				myHeight = dom.document.documentElement.clientHeight;
+			}
+			else if( dom.document.body && ( dom.document.body.clientWidth || dom.document.body.clientHeight ) ) {
+				// IE 4 compatible
+				myWidth = dom.document.body.clientWidth;
+				myHeight = dom.document.body.clientHeight;
+			}
+			return { width: myWidth, height: myHeight };
+		}
+		
+		function updateSize() {
+			var minWidth = 1026, minHeight = 774;
+			var size = getInnerWindowSize();
+			var cont = document.getElementById('container');
+			cont.style.width = '' + size.width + 'px';
+			cont.style.height = '' + size.height + 'px';
+			
+			var aorb = document.getElementById('absorb');
+			aorb.style.left = '' + Math.max( Math.floor( (size.width / 2) - (minWidth / 2) ), 0 ) + 'px';
+			aorb.style.top = '' + Math.max( Math.floor( (size.height / 2) - (minHeight / 2) ), 0 ) + 'px';
+			
+			/* if ((size.width < minWidth) || (size.height < minHeight)) {
+				var hRatio = size.width / minWidth;
+				var vRatio = size.height / minHeight;
+				var ratio = Math.min( hRatio, vRatio );
+				aorb.style.webkitTransform = 'scale(' + ratio + ')';
+				
+				minWidth = Math.floor( minWidth * ratio );
+				minHeight = Math.floor( minHeight * ratio );
+				aorb.style.left = '' + Math.max( Math.floor( (size.width / 2) - (minWidth / 2) ), 0 ) + 'px';
+				aorb.style.top = '' + Math.max( Math.floor( (size.height / 2) - (minHeight / 2) ), 0 ) + 'px';
+			}
+			else aorb.style.webkitTransform = ''; */
+		}
+		
+		if (document.addEventListener) {
+			document.addEventListener( "DOMContentLoaded", function() {
+				document.removeEventListener( "DOMContentLoaded", arguments.callee, false );
+				updateSize();
+			}, false );
+			window.addEventListener( "load", function() {
+				window.removeEventListener( "load", arguments.callee, false );
+				updateSize();
+			}, false );
+			window.addEventListener( "resize", function() {
+				updateSize();
+			}, false );
+		}
+	</script>
+	
+	<script type="text/javascript"> var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-5875241-1']);_gaq.push(['_trackPageview']); (function() {var ga = document.createElement('script');ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';ga.setAttribute('async', 'true');document.documentElement.firstChild.appendChild(ga);})(); </script>
+
+</body>
+</html>
+
