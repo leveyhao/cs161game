@@ -66,7 +66,7 @@ function leftClickUp(e) {
 function getKeyDown(e) {
     var e = window.event || e;
     var unicode = e.charCode || e.keyCode;
-    recordEvent("keydown", unicode, 0, String.fromCharCode(unicode))
+    recordEvent("keydown", unicode, 0, encodeURI(String.fromCharCode(unicode)))
 }
 
 /** records a key being pressed **/
@@ -74,7 +74,7 @@ function getKeyDown(e) {
 function getKeyPress(e) {
     var e = window.event || e;
     var unicode = e.charCode || e.keyCode;
-    recordEvent("keypress", unicode, 0, String.fromCharCode(unicode))
+    recordEvent("keypress", unicode, 0, encodeURI(String.fromCharCode(unicode)))
 }
 
 /** records a key being released **/
@@ -82,7 +82,7 @@ function getKeyPress(e) {
 function getKeyUp(e) {
     var e = window.event || e;
     var unicode = e.charCode || e.keyCode;
-    recordEvent("keyup", unicode, 0, String.fromCharCode(unicode));
+    recordEvent("keyup", unicode, 0, encodeURI(String.fromCharCode(unicode)));
 }
 
 /** records scrolling action including distance of scroll **/
