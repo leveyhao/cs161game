@@ -10,17 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120424092658) do
+ActiveRecord::Schema.define(:version => 20120426024047) do
 
   create_table "events", :force => true do |t|
-    t.integer  "user"
-    t.decimal  "time",       :precision => 15, :scale => 0
-    t.string   "event"
-    t.integer  "info1"
-    t.integer  "info2"
-    t.string   "info3"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.integer "time",    :limit => 15
+    t.string  "event"
+    t.integer "info1"
+    t.integer "info2"
+    t.string  "info3"
+    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|

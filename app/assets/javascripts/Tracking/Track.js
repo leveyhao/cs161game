@@ -113,7 +113,7 @@ function updatePosition(e) {
 /** creates event JSON, saves to array, sends if max length is reached **/
 function recordEvent(eventname, i, j, str) {
     jsonObject = {
-        user: id,
+        user_id: id,
         time: new Date().getTime(),
         event: eventname,
         info1: i,
