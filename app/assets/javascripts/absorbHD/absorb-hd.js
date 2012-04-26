@@ -2593,6 +2593,7 @@ var absorb = {
 	
 	startNewGame: function(target_state) {
 		// this.reset();
+        alert("StartedGame");
 		
 		$G.clearSchedule();
 		$T.removeAll();
@@ -2724,7 +2725,8 @@ var absorb = {
 		switch (this.state) {
 			case 'game': this.gameOver(); break;
 			case 'tutorial': this.exitTutorial(); break;
-			case 'death': 
+			case 'death':
+			    alert("death"); 
 				$G.clearSchedule();
 				$T.removeAll();
 				this.hud.findSprites({ in_game_message: 1 }).each( this.spriteFader );
@@ -2735,6 +2737,7 @@ var absorb = {
 	},
 	
 	exitTutorial: function() {
+	    alert("exitTutorial");
 		$G.clearSchedule();
 		$T.removeAll();
 		
@@ -2936,6 +2939,7 @@ var absorb = {
 	},
 	
 	gameOver: function() {
+	    alert("gameOver");
 		// all lives lost
 		$G.clearSchedule();
 		
@@ -3272,12 +3276,14 @@ $G.addEventListener( 'loadgame', function() {
 	} );
 	
 	$G.addEventListener( 'pause', function() {
+	    alert("pausedGame");
 		$P.showCursor();
 		$A.quiet();
 		$A.playSound('pause');
 	} );
 	
 	$G.addEventListener( 'resume', function() {
+	    alert("resumedGame");
 		$A.playSound('pause');
 		absorb.resumeMusic();
 	} );
