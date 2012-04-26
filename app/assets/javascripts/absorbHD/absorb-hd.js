@@ -2,6 +2,8 @@
 // Copyright (c) 2010 Gold Cartridge & Effect Games LLC
 
 // init stuff, compile this first
+// Tracking events: gamestart, gameend, gamepause, gameresume
+// all events have 0,0, and "" as arguments. 
 
 if (!CustomSprite.extend) {
 	CustomSprite.prototype.__name = 'CustomSprite';
@@ -2593,7 +2595,7 @@ var absorb = {
 	
 	startNewGame: function(target_state) {
 		// this.reset();
-        alert("StartedGame");
+		recordEvent('gamestart', 0, 0, '');
 		
 		$G.clearSchedule();
 		$T.removeAll();
@@ -2726,7 +2728,7 @@ var absorb = {
 			case 'game': this.gameOver(); break;
 			case 'tutorial': this.exitTutorial(); break;
 			case 'death':
-			    alert("death"); 
+				recordEvent('gameend', 0, 0, '');
 				$G.clearSchedule();
 				$T.removeAll();
 				this.hud.findSprites({ in_game_message: 1 }).each( this.spriteFader );
@@ -2737,7 +2739,7 @@ var absorb = {
 	},
 	
 	exitTutorial: function() {
-	    alert("exitTutorial");
+		recordEvent('gameend', 0, 0, '');
 		$G.clearSchedule();
 		$T.removeAll();
 		
@@ -2939,7 +2941,7 @@ var absorb = {
 	},
 	
 	gameOver: function() {
-	    alert("gameOver");
+		recordEvent('gameend', 0, 0, '');
 		// all lives lost
 		$G.clearSchedule();
 		
@@ -3276,14 +3278,14 @@ $G.addEventListener( 'loadgame', function() {
 	} );
 	
 	$G.addEventListener( 'pause', function() {
-	    alert("pausedGame");
+		recordEvent('gamepause', 0, 0, '');
 		$P.showCursor();
 		$A.quiet();
 		$A.playSound('pause');
 	} );
 	
 	$G.addEventListener( 'resume', function() {
-	    alert("resumedGame");
+		recordEvent('gameresume', 0, 0, '');
 		$A.playSound('pause');
 		absorb.resumeMusic();
 	} );
