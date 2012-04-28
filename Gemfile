@@ -10,6 +10,7 @@ gem 'json'
 gem 'pg'
 gem 'sequel'
 gem 'fastercsv'
+gem 'justonedb'
 
 group :development, :test do
     gem 'sqlite3'
