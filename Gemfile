@@ -7,9 +7,9 @@ gem 'rails', '3.2.3'
 
 
 gem 'json'
-gem 'fastercsv'
 gem 'pg'
 gem 'sequel'
+gem 'fastercsv'
 
 group :development, :test do
     gem 'sqlite3'
