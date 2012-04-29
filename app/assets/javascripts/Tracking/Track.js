@@ -114,7 +114,7 @@ function updatePosition(e) {
 function recordEvent(eventname, i, j, str) {
     jsonObject = {
         user_id: id,
-        time: new Date().getTime(),
+        time: new Date(),
         event: eventname,
         info1: i,
         info2: j,

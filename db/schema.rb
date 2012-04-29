@@ -10,20 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120426054015) do
+ActiveRecord::Schema.define(:version => 20120429201954) do
 
   create_table "events", :force => true do |t|
-    t.string  "event"
-    t.integer "info1"
-    t.integer "info2"
-    t.string  "info3"
-    t.integer "user_id"
-    t.decimal "time",    :precision => 15, :scale => 0
+    t.integer  "user_id"
+    t.datetime "time"
+    t.string   "event"
+    t.integer  "info1"
+    t.integer  "info2"
+    t.string   "info3"
   end
 
   create_table "users", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "device",     :default => "mouse"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
 end

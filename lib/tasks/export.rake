@@ -19,7 +19,13 @@ task :export do
         csv << fields
         
         table.all.each do |record|
-            csv << fields.map { |f| record[f] }
+            csv << fields.map { |f| 
+                if f == :time
+                    record[f].to_time.to_i
+                else   
+                    record[f] 
+                end
+            }
         end
     end
 
