@@ -7,7 +7,7 @@ task :export do
       require "csv"
     end
     
-    db_url = ( ENV['DATABASE_URL'] || "postgres://qktkglndgp:rJLfZ6TaTfKYM04DgAbT@ec2-23-23-217-153.compute-1.amazonaws.com/qktkglndgp" )
+    db_url = ( ENV['DATABASE_URL'] || "postgres://jjksovn29p3uvt5s:ydi82xaloclppgl9cxsd3ivpessqzjku@77.92.68.105:10301/db1snor4804xdz7o" )
 
 	db = Sequel.connect(db_url)
 	table_name = :events
