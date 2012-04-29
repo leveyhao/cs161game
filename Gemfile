@@ -11,6 +11,7 @@ gem 'pg'
 gem 'sequel'
 gem 'fastercsv'
 gem 'justonedb'
+gem "activerecord-import", ">= 0.2.9"
 
 group :development, :test do
     gem 'sqlite3'
