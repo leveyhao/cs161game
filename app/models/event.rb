@@ -1,4 +1,22 @@
+require 'csv'
+
 class Event < ActiveRecord::Base
     attr_accessible :event, :info1, :info2, :info3, :time, :user_id
     belongs_to :user
+    
+    def self.generate_csv
+      fields = [:user_id, :time, :event, :info1, :info2, :info3]
+      CSV.open("public/events.csv", "wb") do |csv|
+        csv << fields
+        Event.find(:all).each do |e|        
+          csv << fields.map { |f| 
+            if f == :time
+              e.send(f).to_time.to_i
+            else   
+              e.send(f) 
+            end
+          } 
+        end                                 
+      end  
+    end
 end

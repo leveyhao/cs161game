@@ -4,6 +4,10 @@ Cs161game::Application.routes.draw do
   match "record_event" => "event#record"
 
   root :to => "home#index"
+  
+  match 'download' => 'download#download'
+  resources :event
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
