@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
         Event.find(:all, :order => "user_id, time").each do |e|        
           csv << fields.map { |f| 
             if f == :time
-              e.send(f).to_time.to_i
+              e.time.to_time.to_i * 1000 + e.time.usec / 1000
             else   
               e.send(f) 
             end
