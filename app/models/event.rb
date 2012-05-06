@@ -6,7 +6,8 @@ class Event < ActiveRecord::Base
     
     def self.generate_csv
       fields = ["user_id", "time", "event", "info1", "info2", "info3"]
-      CSV.open("public/events.csv", "wb") do |csv|
+      CSV.open("#{Rails.root}/public/events.csv", "wb") do |csv|
+        logger.info "Generating csv file at #{Rails.root}/public/events.csv..."
         csv << fields
         conn = Event.connection
         sql = "SELECT user_id, time, event, info1, info2, info3 FROM events ORDER BY user_id, time"
@@ -26,7 +27,8 @@ class Event < ActiveRecord::Base
 
     def self.generate_user_csv(user_id)
       fields = [:user_id, :time, :event, :info1, :info2, :info3]
-      CSV.open("public/events.csv", "wb") do |csv|
+      CSV.open("#{Rails.root}/public/events.csv", "wb") do |csv|
+        logger.info "Generating csv file at #{Rails.root}/public/events.csv..."
         csv << fields
         Event.find(:all, :conditions => ["user_id = ?", user_id], :order => "time") do |e|        
           csv << fields.map { |f| 
