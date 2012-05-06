@@ -6,6 +6,7 @@ Cs161game::Application.routes.draw do
   root :to => "home#index"
   
   match 'download' => 'download#download'
+  match 'userdata' => 'download#userdata'
   resources :event
 
 

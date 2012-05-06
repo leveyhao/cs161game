@@ -30,7 +30,7 @@ class Event < ActiveRecord::Base
       CSV.open("/tmp/events.csv", "wb") do |csv|
         logger.info "Generating csv file at /tmp/events.csv..."
         csv << fields
-        Event.find(:all, :conditions => ["user_id = ?", user_id], :order => "time") do |e|        
+        Event.find(:all, :conditions => ["user_id = ?", user_id], :order => "time").each do |e|        
           csv << fields.map { |f| 
             if f == :time
               e.time.to_time.to_i * 1000 + e.time.usec / 1000
