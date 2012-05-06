@@ -19,10 +19,16 @@ class Event < ActiveRecord::Base
             else   
               row[f] 
             end
-          } 
-        end
-=begin
-        Event.find_each do |e|        
+          }
+        end                           
+      end  
+    end
+
+    def self.generate_user_csv(user_id)
+      fields = [:user_id, :time, :event, :info1, :info2, :info3]
+      CSV.open("public/events.csv", "wb") do |csv|
+        csv << fields
+        Event.find(:all, :conditions => ["user_id = ?", user_id], :order => "time") do |e|        
           csv << fields.map { |f| 
             if f == :time
               e.time.to_time.to_i * 1000 + e.time.usec / 1000
@@ -30,8 +36,7 @@ class Event < ActiveRecord::Base
               e.send(f) 
             end
           } 
-        end 
-=end                                
-      end  
+        end                               
+      end
     end
 end
