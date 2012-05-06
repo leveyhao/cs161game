@@ -1,6 +1,7 @@
 class DownloadController < ApplicationController
    
-   def download      
+   def download
+    Event.generate_csv 
     send_file("/tmp/events.csv", :type => "application/csv")    
    end
 
